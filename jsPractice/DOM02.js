@@ -65,7 +65,7 @@ button.addEventListener('click', function(){ // button 클릭할때마다 div요
   // + 그러면 div에 어떤 내용들이 포함될 수 있게 된다.
   // + 여기서는 DOM 요소가 가질 수 있는 대표적인 속성인 style 속성을 조작해보았다.
   newDiv.style.backgroundColor = "red" // background-color 이렇게 쓰면 안돼, - 기호는 js에서 빼기 기호야.
-  newDiv.style.width = "200px"
+  newDiv.style.width = "200px" 
   newDiv.style.height = "200px"
 
 
