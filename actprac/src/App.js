@@ -7,6 +7,8 @@ function App() {
   return (
     <div className="App">
       <Hello />
+      <Hello />
+      <Hello />
       <Welcome />
       <div className={styles.box}>App</div>
     </div>
