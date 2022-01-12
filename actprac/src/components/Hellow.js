@@ -1,17 +1,26 @@
-import World from './World';
-import styles from './Hello.module.css';
-
 export default function Hello() {
+
+  function showName() {
+    console.log("Mike");
+  }
+  function showSex(sex) {
+    console.log(sex);
+  }
+  function showText(e){
+    console.log(e.target.value)
+  }
+
   return (
     <div>
-      <h1 style={
-      {
-        color : 'white',
-        backgroundColor : 'red',
-        opacity : 0.5,
-      }
-      }>Hello</h1>
-      <div className={styles.box}>Hello</div>
+      <h1>Hello</h1>
+      <button onClick={showName}>Show name</button>
+      <button onClick={
+        ()=>{
+          console.log(30);
+        }
+      }>Show age</button>
+      <button onClick={showSex("남")}>sex</button>
+      <input type="text" onChange={showText} />
     </div>
   );
 }
