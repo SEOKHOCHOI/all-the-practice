@@ -10,16 +10,13 @@
   
   
   <script>
-    let change_number;
-    let change_number2;
-
-    change_number = prompt("숫자를 입력하세요");
-    change_number2 = prompt("숫자를 입력하세요");
-    change_number3 = prompt("숫자를 입력하세요");
-    change_number = parseInt(change_number);
-    change_number2 = parseInt(change_number2);
-    change_number3 = parseInt(change_number3);
-    document.write((change_number + change_number2) * change_number3);
+    let id;
+    id = prompt("이름을 입력하세요");
+    if(id === "최석호") {
+      document.write("아이디가 일치합니다");
+    } else {
+      document.write("아이디가 일치하지 않습니다");
+    }
 
   </script>
 </body>
