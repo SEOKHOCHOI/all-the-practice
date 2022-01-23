@@ -1,14 +1,12 @@
-const $title = document.querySelector("#title");
+const $title = document.querySelector("div.hello:first-child h1");
 
 function handleTitleClick() {
-  const titleColor = $title.style.color;
-  let newColor;
-  if (titleColor === "blue") {
-    newColor = "red"
+  const clickedClass = "clicked";
+  if ($title.classList.contains(clickedClass)) {
+    $title.classList.remove(clickedClass);
   } else {
-    newColor = "blue"
+    $title.classList.add(clickedClass);
   }
-  $title.style.color = newColor;
 }
 
 $title.addEventListener("click", handleTitleClick);
