@@ -1,13 +1,14 @@
 const $title = document.querySelector("#title");
 
 function handleTitleClick() {
-  if ($title.style.color === "red") {
-    $title.style.color = "blue"
+  const titleColor = $title.style.color;
+  let newColor;
+  if (titleColor === "blue") {
+    newColor = "red"
   } else {
-    $title.style.color = "red"
+    newColor = "blue"
   }
+  $title.style.color = newColor;
 }
 
 $title.addEventListener("click", handleTitleClick);
-
-
