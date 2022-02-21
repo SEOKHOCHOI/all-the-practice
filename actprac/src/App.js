@@ -27,10 +27,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <button onClick={()=>{navigateTo(PAGE_CART)}}>장바구니 보러가기 ({cart.length})</button>
+        <button onClick={()=>{navigateTo(PAGE_CART)}}>장바구니 보러가기 ({ cart.length })</button>
       </header>
-      { page === 'PAGE_ITEMS' && <ItemList addToCart={addToCart} /> }
-      { page === 'PAGE_CART' && <Cart cart={cart} removeFromCart={removeFromCart} /> }
+      { page === PAGE_ITEMS && <ItemList addToCart={addToCart} /> }
+      { page === PAGE_CART && <Cart cart={cart} removeFromCart={removeFromCart} /> }
     </div>
   );
 }
