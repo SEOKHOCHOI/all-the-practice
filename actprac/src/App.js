@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
 import './App.css';
-import Data from './Data';
+import ItemList from './components/ItemList';
+import Cart from './components/Cart';
 
-
+const PAGE_ITEMS = 'items';
+const PAGE_CART = 'cart';
 
 function App() {
-
-
-
+  const [cart, setCart] = useState([]);
+  const [page, setPage] = useState(PAGE_ITEMS);
   
+  const addToCart = (item) => {
+    console.log("gkgk")
+    setCart([...cart, { ...item }]);
+  };
+
+  const removeFromCart = (itemToRemove) => {
+    setCart(cart.filter(item => item !== itemToRemove ))
+  };
+
+  const navigateTo = (nextPage) => {
+    setPage(nextPage);
+  };
+  
+
   return (
     <div className="App">
-      <h1>Item</h1>
-      <div>
-        <h3>Item1</h3>
-        <h4>1억</h4>
-        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshopping.phinf.naver.net%2Fmain_2856167%2F28561672114.20210824233451.jpg&type=sc960_832" />
-        <button>장바구니</button>
-      </div>
+      <header>
+        <button onClick={()=>{navigateTo(PAGE_CART)}}>장바구니 보러가기 ({cart.length})</button>
+      </header>
+      { page === 'PAGE_ITEMS' && <ItemList addToCart={addToCart} /> }
+      { page === 'PAGE_CART' && <Cart cart={cart} removeFromCart={removeFromCart} /> }
     </div>
   );
 }
