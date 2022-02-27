@@ -46,9 +46,15 @@ function App() {
   //     .quantity = amount;
   //     setCart(newCart);
   // };
-  const [minutes, setMinutes] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const [filpped, setFilpped] = useState(false);
+  const reset = ()=> setAmount(0)
+  const onFlip = () => {
+    reset()
+    setFilpped((current) => !current);
+  };
   const onChange = (event) => {
-    setMinutes(event.target.value);
+    setAmount(event.target.value);
   };
   return (
     // <div className="App">
@@ -62,26 +68,29 @@ function App() {
     <div>
       <h1>Super Converter</h1>
       <div>
-        <label htmlFor="minutes">Minutes</label>
+        <label htmlFor="amount">Minutes</label>
         <input 
-          value={minutes} 
+          value={filpped ? Math.round(amount * 60) : amount} 
           id="minutes" 
           placehoder="Minutes" 
           type="number" 
           onChange={onChange}
+          disabled={filpped}
         />
       </div>
       <div>
         <label htmlFor="hours">Hours</label>
         <input 
-          value={Math.round(minutes / 60)}
+          value={filpped ? amount : Math.round(amount / 60)}
           id="hours" 
           placehoder="Hours" 
           type="number" 
-          disabled
+          disabled={!filpped}
+          onChange={onChange}
         />
       </div>
-      <button onClick={()=> setMinutes(0)}>Reset</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={onFlip}>{filpped ? "min->hours" : "hours->min"}</button>
     </div>
   );
 }
