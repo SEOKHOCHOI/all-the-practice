@@ -1,6 +1,11 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+  font-size: 5rem;
 }
-.App p {
-  color: blue;
+
+button {
+  font-size: 3rem;
 }
