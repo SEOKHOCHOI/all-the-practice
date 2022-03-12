@@ -1,18 +1,20 @@
 function memo() {
   const [loading, setLoading] = React.useState(true);
   const [movies, setMovies] = React.useState([]);
+  const [age, setAge] = React.useState(15);
+   
 
   // 첫 번째 fetch예시 (then 사용.)
   React.useEffect(() => {
     fetch(
-      `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=${age}&sort_by=year`
     )
       .then((response) => response.json())
       .then((json) => {
         setMovies(json.data.movies);
         setLoading(false);
       });
-  }, []);
+  }, [age]);
 
   // getMovies는 async-await을 쓰기위해 만듬( 두번째 useEffect에 사용됨 )
   const getMovies = async () => {

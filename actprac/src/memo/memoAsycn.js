@@ -2,14 +2,16 @@
 // 가독성을 위해 여기에 작성중!
 
 /*
+  여기말고 제일 밑에 정리한걸 읽으면 더 정확!
+
   동기는 하나의 작업이 끝나기까지 기다려야함.
   통신을 했는데 그걸 받기까지 나머지를 기다려야하면 
   웹페이지 하나를 실행할때 매우 오래걸림.
 
-  그래서 통신이나 JS는 비동기이지만 
-  사용시에는
+  그래서 통신은 비동기, JS는 기본적으로 동기이지만 
+  통신시에는
   .then이나
-  그것을 간편화한 async await을 사용하는것.
+  그것을 간편화한 async await을 사용해 부분적으로 통신을 동기화 시킴.
   이를 사용하지 않으면 데이터를 요청하고 받아오기까지 기다려주지않고
   비동기방식이기에 undefined를 출력함.
 
@@ -30,7 +32,7 @@ console.log("example은 3초뒤 실행되니 얘가 먼저 실행됨.");
 // Promise, Async는 위의 콜백함수에서 콜백지옥을 해결하기 위해 사용됨.
 // promise: 자바스크립트 비동기 처리에 사용되는 객체임.(객체가 뭔지모름)
 /*
-  document.querySelector('url 주소/블라블라', function(response) {
+  $('url 주소/블라블라', function(response) {
     //...
   });
   위 API가 실행되며 서버에다 데이터하나 보내달라는 요청을 보냄.
@@ -41,13 +43,13 @@ console.log("example은 3초뒤 실행되니 얘가 먼저 실행됨.");
 
 // 비동기 처리를 위해 콜백함수 사용 ( ajax 통신 ), 지정된 url에서 1번 상품 데이터를 받아오는 코드
 function getData(callbackFunc) {
-  document.querySelector.get("url 주소/prudeucts/1", function (response) {
+  $.get("url 주소/prudeucts/1", function (response) {
     // 1. 서버에서 받은 데이터 response를 callbackFunc() 함수에 넘겨주고
     callbackFunc(response);
   });
 }
 getData(function (tableData) {
-  //2.  document.querySelector.get()의 resonse값이 tablseData에 전달됨.
+  //2.  $.get()의 resonse값이 tablseData에 전달됨.
   console.log(tableData);
 });
 
@@ -55,7 +57,7 @@ getData(function (tableData) {
 function getData(callback) {
   // new Promise() 추가
   return new Promise(function (resolve, reject) {
-    document.querySelector.get("url 주소/products/1", function (response) {
+    $.get("url 주소/products/1", function (response) {
       // 데이터를 받으면 resolve() 호출
       resolve(response);
     });
@@ -64,7 +66,7 @@ function getData(callback) {
 // getData()의 실행이 끝나면 호출되는 then()
 getData().then(function (tableData) {
   // resolve()의 결과 값이 여기로 전달돼.
-  // document.querySelector.get()의 response 값이 tableData에 전달됨
+  // $.get()의 response 값이 tableData에 전달됨
   console.log(tableData);
 });
 
